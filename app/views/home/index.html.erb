@@ -1,0 +1,19 @@
+<% if @user != nil %>
+	<h1>Hello <%= @user.email %></h1>
+	<%= link_to('Edit information', edit_user_registration_path) %>
+	<%= link_to('Logout', destroy_user_session_path, :method => :destroy) %>
+<% else %>
+	<h1>Hello, please login to start</h1>
+
+    <%= form_for(:user, :url => session_path(:user)) do |f| %>
+    	<%= f.text_field :email %>
+    	<%= f.password_field :password %>
+    	<%= f.check_box :remember_me %>
+    	<%= f.label :remember_me %>
+    	<%= f.submit 'Sign in' %>
+    	<%= link_to "Forgot your password?", new_password_path(:user) %>
+    <% end %>
+
+    <%= link_to "Not a member? Sign up", new_user_registration_path %>
+
+<% end %>
