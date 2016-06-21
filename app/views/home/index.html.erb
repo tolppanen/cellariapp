@@ -1,5 +1,16 @@
+<div>
+
 <% if @user != nil %>
+
 	<h1>Hello <%= @user.email %></h1>
+    <ul>
+        <% @wines.each do |w| %>
+            <li><%= w.name %> <%= w.vintage %>
+            <%= image_tag "http://cdn.alko.fi/ProductImages/Scaled/469287/product.jpg" %>
+            </li>
+        <% end %>
+    </ul>
+
 	<%= link_to('Edit information', edit_user_registration_path) %>
 	<%= link_to('Logout', destroy_user_session_path, :method => :destroy) %>
 <% else %>
@@ -17,3 +28,5 @@
     <%= link_to "Not a member? Sign up", new_user_registration_path %>
 
 <% end %>
+
+</div>
