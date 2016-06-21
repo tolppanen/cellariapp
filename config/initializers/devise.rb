@@ -13,7 +13,7 @@ config.warden do |manager|
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = 'f342d2eb4c8b4700e2f97e523ed74adf5c2f7acfc23d6b77ae89810a42eae747e42328e1e70890a9b9cebd2ebe6a09017d7eb521b4c375fc164b27a5581883f0'
-
+config.secret_key = 'bfe50c7f555dc2f81464331a0c1e55f117f8e54230c1b9f1fb26e76c24e4ceeecfc4504bb169298851fa7a900f94c8e33b2c626c9ec5bc74180790c0b5d3384e'
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
