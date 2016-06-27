@@ -3,9 +3,76 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-#main-container {
+
+/*Panel*/
+
+
+body {
+	background-color: #B62742;
+}
+
+#mainTitle {
 	text-align: center;
-	border: black;
-	max-width: 350px;
+}
+
+.wineTile {
+	padding: 50px;
+	text-align: center;
+}
+
+.wineTile:hover {
+	h5 {
+		color: orangered;
+	}
+}
+
+.wineTile img {
+	max-height: 180px;
+}
+
+.panel {
 	margin: auto;
+	width: 50%;
+	max-width: 350px;
+	height: 400px;
+}
+
+.loginPanel h1 {
+	color: white;
+	font-family: 'Damion', cursive;
+	font-size: 74px;
+}
+
+.loginPanel {
+	height: 450px;
+	margin-top: 180px;
+	text-align: center;
+	background-color: #942049;
+	border-radius: 18px;
+	min-width: 400px;
+}
+
+.panel form {
+	text-align: center;
+}
+
+::-webkit-input-placeholder {
+   color: rgba(225,225,225,0.75);
+}
+
+.panel input[type="password"], textarea {
+  background-color : #942049;
+  border: 1px solid black;
+  color: white;
+  placeholder-color: white;
+}
+
+.panel input[type="text"], textarea {
+   background-color : #942049;
+  border: 1px solid black;
+  color: white;
+}
+.accountManage {
+	text-align: center;
+	padding-top: 16px;
 }
