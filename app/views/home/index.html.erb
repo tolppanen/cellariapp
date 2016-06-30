@@ -2,29 +2,47 @@
 
 <% if @user != nil %>
 
-<h1 id="mainTitle">Hello <%= @user.email %></h1>
-<h4> <%= @wines.count %> </h4>
+    <h1 id="mainTitle">Hello <%= @user.email %></h1>
+    <h4> <%= @bottles.count %> </h4>
 
-<div class="wineListHolder">
+    <div class="wineListHolder">
 
 
-    <div class="row small-up-1 medium-up-2 large-up-4">
+        <div class="row small-up-1 medium-up-2 large-up-4">
 
-        <% @wines.each do |w| %>
-        <div class="column wineTile">
-            <!-- Fetch product images from Alko cdn -->
-            <img src="http://cdn.alko.fi/ProductImages/Scaled/<%= w.product_number %>/product.jpg">
-            <h5><%= w.name %></h5>
-            <h6><%= w.vintage %></h6>
+            <% @bottles.each do |b| %>
+
+                
+
+
+                    <div class="column wineTile">
+                    <%= link_to root_path, nil, style: 'color:#FFFFFF;' do %>
+                    <!-- Fetch product images from Alko cdn -->
+                    <% if b.wine != nil %>
+                        <img src="http://cdn.alko.fi/ProductImages/Scaled/<%= b.wine.product_number %>/product.jpg">
+                        <h5><%= b.wine.name %></h5>
+                        <h6><%= b.wine.vintage %></h6>
+                     <% end %>
+                                     <% end %>
+                    </div>
+
+            <% end -%>
+
+<%= form_for @newbottle do |f| %>
+
+
+  <%= f.hidden_field :user_id, :value => current_user.id %></p>
+  <%= f.collection_select(:wine_id, Wine.all, :id, :name) %>
+
+  <%= submit_tag %>
+
+<% end %>
+
+
+            <%= link_to('Edit information', edit_user_registration_path) %>
+            <%= link_to('Logout', destroy_user_session_path, :method => :destroy) %>
         </div>
-        <% end -%>
-    </ul>
-
-
-    <%= link_to('Edit information', edit_user_registration_path) %>
-    <%= link_to('Logout', destroy_user_session_path, :method => :destroy) %>
-    <% else %>
-
+<% else %>
 
 
 <div class="panel callout radius loginPanel">

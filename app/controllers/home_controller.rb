@@ -1,6 +1,9 @@
 class HomeController < ApplicationController
 	def index
 		@user = current_user
-		@wines = Wine.all
+		if(current_user != nil)
+			@bottles = @user.bottles.all
+			@newbottle = Bottle.new
+		end
 	end
 end
