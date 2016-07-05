@@ -14,8 +14,10 @@
 
 
         <%= f.hidden_field :user_id, :value => current_user.id %></p>
-        <%= f.collection_select(:wine_id, Wine.all, :id, :name) %>
-
+       <!--  <%= f.collection_select(:wine_id, Wine.all, :id, :name) %> -->
+       <div id="prefetch">
+       <%= f.text_field(:wine_id, class: "typeahead")%>
+       </div>
         <%= submit_tag %>
 
         <% end %>
@@ -35,12 +37,13 @@
             <h6><%= b.wine.vintage %></h6>
                <% end %>  
                <% end %>  
-            <button id="drinkWineButton<%= b.id %>" class="button success" onclick="showReviewBox(<%= b.id %>)">Drink</button>    
-            <form class="wineReviewBox" id="wineReviewBox<%= b.id %>">
+            <button id="drinkWineButton<%= b.id %>" class="button success" onclick="showReviewBox(<%= b.id %>)">Drink</button>
+            <div class="wineReviewBox" id="wineReviewBox<%= b.id %>">  
+            <form>
                 <input type="text" name="firstname"><br>
                 <%= link_to 'Destroy', b, :method => :delete, :dconfirm => 'Are you sure?', class: 'button success' %>
             </form>
-
+        </div>
     
         </div>
 
@@ -48,7 +51,7 @@
 
 
 
-        <div>
+        <div id="logoutpanel">
             <%= link_to('Edit information', edit_user_registration_path) %>
             <%= link_to('Logout', destroy_user_session_path, :method => :destroy) %>
 
@@ -73,6 +76,8 @@
                 <br>
                 <%= link_to "Not a member? Sign up", new_user_registration_path %>
             </div>
+
+            <small>Work in progress. By Antti Tolppanen.</small>
 
             <% end %>
         </div>

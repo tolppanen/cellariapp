@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'home#index'
   post 'bottles/' => 'bottles#create'
   resources :bottles
+  resources :wines
 
   
 

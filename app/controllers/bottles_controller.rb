@@ -1,10 +1,12 @@
 class BottlesController < ApplicationController
 
 	def create
-		puts "hello"
 		params.permit!
-		puts(params)
-		@newbottle = Bottle.new(params[:bottle])
+		puts(Wine.find_by(name: params[:bottle][:wine_id]))
+		@newBottleWine = Wine.find_by(name: params[:bottle][:wine_id])
+		puts("==========")
+		@newbottle = Bottle.new(user_id: params[:bottle][:user_id], wine_id: @newBottleWine.id)
+		puts(@newbBottleWine)
 		@newbottle.save
 		redirect_to root_path
 	end
