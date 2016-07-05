@@ -17,3 +17,27 @@
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
+
+
+
+
+
+var displayAddBottle = false;
+
+function toggleAddBottleField() {   
+	if(!displayAddBottle) {
+		document.getElementById("bottleCreator").style.display="block";
+		displayAddBottle = true
+	}
+	else {
+		document.getElementById("bottleCreator").style.display="none";
+		displayAddBottle = false
+	}
+}
+
+function showReviewBox(wineId) {
+	console.log("wineReviewBox" + wineId)
+	document.getElementById("drinkWineButton" + wineId).style.display = "none";
+	document.getElementById("wineReviewBox" + wineId).style.display = "block";
+}
+
