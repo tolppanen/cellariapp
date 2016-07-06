@@ -16,7 +16,7 @@
         <%= f.hidden_field :user_id, :value => current_user.id %></p>
        <!--  <%= f.collection_select(:wine_id, Wine.all, :id, :name) %> -->
        <div id="prefetch">
-       <%= f.text_field(:wine_id, class: "typeahead")%>
+       <%= f.text_field(:wine_id, class: "typeahead", autocomplete: "on")%>
        </div>
         <%= submit_tag %>
 
@@ -51,7 +51,7 @@
 
 
 
-        <div id="logoutpanel">
+        <div id="logout">
             <%= link_to('Edit information', edit_user_registration_path) %>
             <%= link_to('Logout', destroy_user_session_path, :method => :destroy) %>
 
