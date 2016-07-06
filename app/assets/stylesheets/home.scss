@@ -23,8 +23,19 @@ body {
 	background-color: #B62742;
 }
 
+#addWineButton {
+	display: block;
+	margin: auto;
+}
+
 #bottleCreator {
 	display: none;
+	width: 400px;
+	text-align: center;
+	border: 3px solid gray;
+	margin: auto;
+	padding: 20px;
+	background-color: rgba(225,200,200,0.5);
 }
 
 .wineListHolder {
@@ -35,9 +46,13 @@ body {
 	color: black;
 }
 
-#mainTitle {
+#mainTitle, #bottleCount {
 	text-align: center;
+	color: white;
+	font-family: 'Damion', cursive;
 }
+
+
 
 .wineTile {
 	padding: 50px;
@@ -103,6 +118,16 @@ body {
 	padding-top: 16px;
 }
 
+
+#prefetch {
+	width: 300px;
+	margin: auto;
+/*	text-align: center;*/
+}
+
+/*#prefetch input {
+	text-align: center;
+}*/
 
 
 
@@ -211,13 +236,19 @@ span.twitter-typeahead {
   top: 46px !important;
 }
 
+.twitter-typehead .tt-input {
+	text-align: center;
+}
+
 .twitter-typeahead .tt-hint {
 display: block;
 color: gray;
 height: 39px !important;
 padding: 0.5rem !important;
 font-size: 16px !important;
- line-height: 1.3 !important; 
+ line-height: 1.3 !important;
+ margin: auto !important;
+/* text-align: center !important; */
 /*border: 1px solid transparent;*/
 /* border-radius: 4px; */
 }

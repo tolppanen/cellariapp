@@ -26,11 +26,15 @@ var displayAddBottle = false;
 function toggleAddBottleField() {   
 	if(!displayAddBottle) {
 		document.getElementById("bottleCreator").style.display="block";
-		displayAddBottle = true
+		document.getElementById("addWineButton").className="button alert";
+		document.getElementById("addWineButton").innerHTML="Close";
+		displayAddBottle = true;
 	}
 	else {
 		document.getElementById("bottleCreator").style.display="none";
-		displayAddBottle = false
+				document.getElementById("addWineButton").className="button success";
+		document.getElementById("addWineButton").innerHTML="Add Bottle";
+		displayAddBottle = false;
 	}
 }
 
