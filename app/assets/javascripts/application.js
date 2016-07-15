@@ -32,7 +32,7 @@ function toggleAddBottleField() {
 	}
 	else {
 		document.getElementById("bottleCreator").style.display="none";
-				document.getElementById("addWineButton").className="button success";
+		document.getElementById("addWineButton").className="button success";
 		document.getElementById("addWineButton").innerHTML="Add Bottle";
 		displayAddBottle = false;
 	}
@@ -40,8 +40,14 @@ function toggleAddBottleField() {
 
 function showReviewBox(wineId) {
 	console.log("wineReviewBox" + wineId)
-	document.getElementById("drinkWineButton" + wineId).style.display = "none";
+	// document.getElementById("drinkWineButton" + wineId).style.display = "none";
 	document.getElementById("wineReviewBox" + wineId).style.display = "block";
+}
+
+function hideReviewBox(wineId) {
+	console.log("wineReviewBox" + wineId)
+	// document.getElementById("drinkWineButton" + wineId).style.display = "inline";
+	document.getElementById("wineReviewBox" + wineId).style.display = "none";
 }
 
 
@@ -51,30 +57,40 @@ ready = function() {
 
 
 
-	var wines = new Bloodhound({
-	  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-	  queryTokenizer: Bloodhound.tokenizers.whitespace,
-	  prefetch: "../wines.json"
-
-	});
-
-	 wines.initialize();
-	console.log(wines);
 
 
 
-	$("#prefetch .typeahead").typeahead(null, {
-	  displayKey: 'name',
-	  name: 'wine',
-	  source: wines,
-	  offset: true,
-	  hint: false,
-	  highlight: true
-	}
+
+	function refreshPrefetch() {
+
+		localStorage.clear()
+
+		var wines = new Bloodhound({
+			datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+			queryTokenizer: Bloodhound.tokenizers.whitespace,
+			prefetch: "../wines.json"
+
+		});
+
+		wines.initialize();
+		console.log(wines);
+
+
+
+		$("#prefetch .typeahead").typeahead(null, {
+			displayKey: 'name',
+			name: 'wine',
+			source: wines,
+			offset: true,
+			hint: false,
+			highlight: true
+		}
 	).on('keyup', function($e, datum) {  // suggestion selected
-           console.log($('#prefetch .typeahead'));  
-    })
+		console.log($('#prefetch .typeahead'));  
+	})
+}
 
+refreshPrefetch();
 
 
 };

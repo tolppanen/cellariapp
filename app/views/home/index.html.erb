@@ -27,7 +27,7 @@
         <div id="prefetch">
          <%= f.text_field(:wine_id, class: "typeahead", autocomplete: "on", placeholder: "Search for wine")%>
      </div>
-     <%= submit_tag "Add Bottle", class: "button success" %>
+     <%= submit_tag "Add Bottle", class: "button success", :onclick => "return refreshPrefetch();" %>
 
      <% end %>
 
@@ -43,22 +43,43 @@
         <% @bottles.each do |b| %>
 
         <div class="column wineTile">
-            <%= link_to root_path, nil, style: 'color:#FFFFFF;' do %>
             <!-- Fetch product images from Alko cdn -->
+            <div onclick="showReviewBox(<%= b.id %>)">
+            <a>
             <% if b.wine != nil %>
-            <img src="http://cdn.alko.fi/ProductImages/Scaled/<%= b.wine.product_number %>/product.jpg">
-            <h5><%= b.wine.name %></h5>
-            <h6><%= b.wine.vintage %></h6>
-            <% end %>  
-            <% end %>  
-            <button id="drinkWineButton<%= b.id %>" class="button success" onclick="showReviewBox(<%= b.id %>)">Drink</button>
-            <div class="wineReviewBox" id="wineReviewBox<%= b.id %>">  
+                <% if b.wine.product_number != nil%>
+                    <img src="http://cdn.alko.fi/ProductImages/Scaled/<%= b.wine.product_number %>/product.jpg">
+                <% else %>
+                    <%= image_tag 'red_placeholder.jpg' %>
+                <% end %>
+                <h5><%= truncate(b.wine.name, :length => 45) %></h5>
+                <h6><%= b.wine.vintage != nil ? b.wine.vintage : "No vintage" %></h6>  
+            <% end %> 
+            </a>
+            </div> 
+            <!-- <button id="drinkWineButton<%= b.id %>" class="button success reviewadd" onclick="showReviewBox(<%= b.id %>)">Drink</button> -->
+            
+            <!-- So I propably want to put this whole thing in the center of the screen with bottle information -->
+            <div class="wineReviewBox centered" data-closable="slide-out-right" id="wineReviewBox<%= b.id %>"> 
+              <button class="close-button reviewCloser" aria-label="Dismiss alert" type="button" onclick="hideReviewBox(<%= b.id %>)" >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            <div class="reviewContainer">
+            <h4>Review this wine</h4>
+            <h6><%= b.wine.name %></h6>
+                <div class="reviewGeneratorImageHolder">
+                 <% if b.wine.product_number != nil%>
+                        <img src="http://cdn.alko.fi/ProductImages/Scaled/<%= b.wine.product_number %>/product.jpg">
+                    <% else %>
+                        <%= image_tag 'red_placeholder.jpg' %>
+                    <% end %>
+                </div>
                 <form>
-                    <input type="text" name="firstname"><br>
-                    <%= link_to 'Destroy', b, :method => :delete, :dconfirm => 'Are you sure?', class: 'button success' %>
+                    <input type="text" name="firstname" placeholder="Write a description"><br>
+                    <%= link_to 'Add review', b, :method => :delete, :dconfirm => 'Are you sure?', class: 'button success addreview' %>
                 </form>
             </div>
-
+        </div>
         </div>
 
         <% end -%>
