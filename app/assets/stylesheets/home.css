@@ -8,7 +8,6 @@
 
 
 
-
 .centered {
   position: fixed;
   left: 50%;
@@ -16,8 +15,16 @@
   top: 25%;
 }
 
+
 .reviewContainer {
   padding: 30px;
+}
+
+.top {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  background-color: #1d2120;
 }
 
 
@@ -36,8 +43,14 @@
   border: 1px solid black;
 }
 
-body {
-	background-color: #B62742;
+#loginbackground {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url(/assets/cellari.jpg);
+  background-size:     cover;                      /* <------ */
+    background-repeat:   no-repeat;
+    background-position: center center;
 }
 
 
@@ -50,13 +63,15 @@ body {
 	display: none;
 	width: 400px;
 	text-align: center;
-	border: 3px solid gray;
+	border: 1px solid black;
 	margin: auto;
 	padding: 20px;
-	background-color: rgba(225,200,200,0.5);
 }
 
 .wineListHolder {
+    font-family: 'Karla', sans-serif;
+  position: relative;
+  top: 100px;
 	background-color: white;
 }
 
@@ -64,10 +79,21 @@ body {
 	color: black;
 }
 
-#mainTitle, #bottleCount {
-	text-align: center;
+#mainTitle {
+  display: inline;
 	color: white;
-	font-family: 'Damion', cursive;
+  font-family: 'Karla', sans-serif;
+  margin-left: 10px;
+}
+
+
+#userInfo {
+  position: relative;
+    color: white;
+  font-family: 'Karla', sans-serif;
+  float: right;
+  top: 15px;
+  margin-right: 10px;
 }
 
 #logout {
@@ -94,8 +120,13 @@ body {
 }
 
 .wineTile {
+  font-family: 'Karla', sans-serif;
 	padding: 50px;
 	text-align: center;
+}
+
+.wineTile h5 {
+    font-family: 'Karla', sans-serif;
 }
 
 .wineTile:hover a {
@@ -117,19 +148,40 @@ body {
 
 .loginPanel h1 {
 	color: white;
-	font-family: 'Damion', cursive;
+  font-weight: lighter;
 	font-size: 74px;
 }
 
+.callout {
+  border: none;
+}
+
 .loginPanel {
+  font-family: 'Karla', sans-serif;
 	height: 450px;
-	top: 25%;
-	min-width: 250px;
+	position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+	min-width: 310px;
 	max-width: 600px;
 	text-align: center;
-	background-color: #942049;
-	border-radius: 18px;
+	background-color: rgba(100,100,100,0.1);
+  opacity: 0.95;
+  padding: 30px;
+  border: 1px solid white;
 }
+
+.loginPanel input {
+  color: white;
+  text-align: center;
+  background-color: transparent !important;
+}
+
+.loginPanel label {
+  color: white;
+opacity: 0.7;
+}
+
 
 .panel form {
 	text-align: center;
@@ -139,26 +191,31 @@ body {
    color: rgba(225,225,225,0.75);
 }
 
-.panel input[type="password"], textarea {
-  background-color : #942049;
-  border: 1px solid black;
-  color: white;
-  placeholder-color: white;
-}
-
-.panel input[type="text"], textarea {
-   background-color : #942049;
-  border: 1px solid black;
-  color: white;
-}
 
 .accountManage {
 	text-align: center;
 	padding-top: 16px;
+  color: #dad5e8;
+}
+
+.accountManage a {
+    color: #dad5e8;
+}
+
+.accountManage a:hover {
+  color: orangered;
 }
 
 a.button.success.addreview {
   color: white;
+}
+
+.button.success {
+  background-color: #39564a !important;
+}
+
+.button.success:hover {
+  opacity: 0.9;
 }
 
 
@@ -168,9 +225,11 @@ a.button.success.addreview {
 /*	text-align: center;*/
 }
 
-/*#prefetch input {
-	text-align: center;
-}*/
+.bottleVintageInput {
+  width: 40%;
+  margin: auto;
+  margin-bottom: 20px;
+}
 
 
 
@@ -295,4 +354,7 @@ font-size: 16px !important;
 /*border: 1px solid transparent;*/
 /* border-radius: 4px; */
 }
+
+
+
 

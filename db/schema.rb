@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160629103333) do
+ActiveRecord::Schema.define(version: 20160728133906) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,9 +19,14 @@ ActiveRecord::Schema.define(version: 20160629103333) do
   create_table "bottles", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "wine_id"
+    t.integer  "vintage"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "notes"
   end
+
+  add_index "bottles", ["user_id"], name: "index_bottles_on_user_id", using: :btree
+  add_index "bottles", ["wine_id"], name: "index_bottles_on_wine_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -36,6 +41,7 @@ ActiveRecord::Schema.define(version: 20160629103333) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "username"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -43,10 +49,11 @@ ActiveRecord::Schema.define(version: 20160629103333) do
 
   create_table "wines", force: :cascade do |t|
     t.string   "name"
-    t.integer  "vintage"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.string   "product_number"
+    t.string   "country"
+    t.string   "area"
   end
 
   add_index "wines", ["product_number"], name: "index_wines_on_product_number", using: :btree

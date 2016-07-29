@@ -12,12 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require twitter/typeahead
 //= require foundation
 //= require turbolinks
-//= require twitter/typeahead
+//= require_tree ../../../vendor/assets/javascripts
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
 
 
 
@@ -27,13 +27,13 @@ function toggleAddBottleField() {
 	if(!displayAddBottle) {
 		document.getElementById("bottleCreator").style.display="block";
 		document.getElementById("addWineButton").className="button alert";
-		document.getElementById("addWineButton").innerHTML="Close";
+		document.getElementById("addWineButton").innerHTML="x";
 		displayAddBottle = true;
 	}
 	else {
 		document.getElementById("bottleCreator").style.display="none";
 		document.getElementById("addWineButton").className="button success";
-		document.getElementById("addWineButton").innerHTML="Add Bottle";
+		document.getElementById("addWineButton").innerHTML="+";
 		displayAddBottle = false;
 	}
 }
@@ -53,10 +53,9 @@ function hideReviewBox(wineId) {
 
 
 var ready;
+
+
 ready = function() {
-
-
-
 
 
 
@@ -68,7 +67,7 @@ ready = function() {
 		var wines = new Bloodhound({
 			datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
 			queryTokenizer: Bloodhound.tokenizers.whitespace,
-			prefetch: "../wines.json"
+			prefetch: "../wines/api"
 
 		});
 
@@ -93,8 +92,13 @@ ready = function() {
 refreshPrefetch();
 
 
+
+
+
 };
 
 $(document).ready(ready);
 $(document).on('page:load', ready)
 
+
+$(function(){ $(document).foundation(); });

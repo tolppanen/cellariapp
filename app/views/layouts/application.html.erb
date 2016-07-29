@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <head>
+    <meta charset="utf-8" />
 
-	<title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+
+    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "foundation" %>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <link href='https://fonts.googleapis.com/css?family=Karla' rel='stylesheet' type='text/css'>
+
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+
+
 	
+  
 
-	<%= stylesheet_link_tag    "application" %>
-	<%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
-	<link href='https://fonts.googleapis.com/css?family=Damion' rel='stylesheet' type='text/css'>
-	<%= csrf_meta_tags %>
-</head>
 
-<body>
+    <%= yield %>
 
-	<p id="error"><%= flash[:error] %></p>
-	<p id="notice"><%= flash[:notice] %></p>
-	<p id="notice"><%= flash[:alert] %></p>
-
-	<%= yield %>
-
-</body>
+  </body>
 </html>
