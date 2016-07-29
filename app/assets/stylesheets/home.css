@@ -8,16 +8,24 @@
 
 
 
-.centered {
-  position: fixed;
-  left: 50%;
-  margin-left: -200px;
-  top: 25%;
-}
 
 
 .reviewContainer {
   padding: 30px;
+}
+
+.reviewCloser {
+  text-align: right;
+position: relative;
+display: block;
+top: 5px;
+left: 380px;
+}
+
+.manageList {
+  left: -60px !important; 
+top: auto;
+width: inherit
 }
 
 .top {
@@ -27,12 +35,22 @@
   background-color: #1d2120;
 }
 
+.manageLink {
+
+      right: 0px;
+    position: fixed;
+    margin-right: 40px;
+    }
+
 
 .reviewGeneratorImageHolder {
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
+.account-manager {
+  right: 0px;
+}
 
 .wineReviewBox {
   display: none;
@@ -222,13 +240,33 @@ a.button.success.addreview {
 #prefetch {
 	width: 300px;
 	margin: auto;
-/*	text-align: center;*/
 }
+
+/*I have no idea why this is needed but don't you f***ing dare touch it...*/
+
+#prefetch span :nth-child(1) :nth-child(2) {
+   display: none;
+}
+
+.mainnav {
+  border-bottom: 1px solid gray;
+  font-family: 'Karla', sans-serif;
+}
+
+
 
 .bottleVintageInput {
   width: 40%;
   margin: auto;
   margin-bottom: 20px;
+}
+
+
+.centered {
+  position: fixed;
+  left: 50%;
+  margin-left: -200px;
+  top: 25%;
 }
 
 
@@ -354,6 +392,8 @@ font-size: 16px !important;
 /*border: 1px solid transparent;*/
 /* border-radius: 4px; */
 }
+
+
 
 
 

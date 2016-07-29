@@ -19,8 +19,8 @@
         <div id="bottleCreator">
             <%= form_for @newbottle do |f| %>
             <%= f.hidden_field :user_id, :value => current_user.id %></p>
+            <%= f.label :wine_id %>
             <div id="prefetch">
-              <%= f.label :wine_id %>
               <%= f.text_field(:wine_id, class: "typeahead", autocomplete: "on", placeholder: "Search for wine")%>
            </div>
            <%= f.label :vintage %>
@@ -83,13 +83,6 @@
 
 <% end -%>
 
-
-
-<div id="logout">
-    <%= link_to('Edit information', edit_user_registration_path) %>
-    <%= link_to('Logout', destroy_user_session_path, :method => :destroy) %>
-
-</div>
 
 <% else %>
 
