@@ -23,9 +23,13 @@ left: 380px;
 }
 
 .manageList {
-  left: -60px !important; 
+  left: -60px !important;
 top: auto;
 width: inherit
+}
+
+.manageList li {
+  float: right;
 }
 
 .top {
@@ -37,8 +41,8 @@ width: inherit
 
 .manageLink {
       right: 0px !important;
-    position: fixed !important;
-    margin-right: 40px !important;
+      position: fixed !important;
+      margin-right: 40px !important;
     }
 
 

@@ -3,9 +3,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    puts "============="
+    super
+  end
 
   # POST /resource
   # def create
@@ -42,6 +43,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def configure_sign_up_params
   #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
   # end
+
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params

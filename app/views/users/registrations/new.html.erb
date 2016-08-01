@@ -1,4 +1,11 @@
-<h2>Sign up</h2>
+<div id="loginbackground">
+
+
+
+    <div class="panel callout radius loginPanel">
+
+
+<h1>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
@@ -8,6 +15,10 @@
     <%= f.email_field :email, autofocus: true %>
   </div>
 
+  <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username %>
+  </div>
 
   <div class="field">
     <%= f.label :password %>
@@ -28,3 +39,6 @@
 <% end %>
 
 <%= render "users/shared/links" %>
+
+</div>
+</div>
