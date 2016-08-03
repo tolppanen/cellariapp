@@ -4,11 +4,12 @@ class BottlesController < ApplicationController
 		params.permit!
 		@newBottleWine = Wine.find_by(name: params[:bottle][:wine_id])
 		if(@newBottleWine == nil) 
-			redirect_to root_path
+			redirect_to bottles_path
 		else
-		@newbottle = Bottle.new(user_id: params[:bottle][:user_id], wine_id: @newBottleWine.id, vintage: params[:bottle][:vintage])
+		@newbottle = Bottle.new(user_id: params[:bottle][:user_id], wine_id: @newBottleWine.id, vintage: params[:bottle][:vintage], notes: params[:bottle][:notes])
+		puts params
 		@newbottle.save
-		redirect_to root_path
+		redirect_to bottles_path
 		end
 	end
 
@@ -30,7 +31,7 @@ class BottlesController < ApplicationController
 	private
 
 	  def bottle_params
-	    params.require(:bottle).permit(:user, :wine, :others)
+	    params.require(:bottle).permit(:user, :wine, :notes, :others)
 	  end
 
 end

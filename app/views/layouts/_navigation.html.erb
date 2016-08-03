@@ -1,9 +1,10 @@
 <div class="pure-menu pure-menu-horizontal mainnav">
+
     <ul class="pure-menu-list">
         <li class="pure-menu-item pure-menu-selected"><a href="<%= root_path %>" class="pure-menu-link">Cellari</a></li>
         <li class="pure-menu-item"><%= link_to('Bottles', bottles_path,  :class => "pure-menu-link") %></li>
         <li class="pure-menu-item"><a href="#" class="pure-menu-link">Journal</a></li>
-        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Wines</a></li>
+        <li class="pure-menu-item"><%= link_to('Wines', wines_path,  :class => "pure-menu-link") %></li>
         <li class="pure-menu-item"><a href="#" class="pure-menu-link">Friends</a></li>
         <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover manageLink">
             <a href="#" id="menuLink1" class="pure-menu-link"><%= current_user.username %></a>
@@ -13,6 +14,33 @@
             </ul>
         </li>
     </ul>
+
+
+
 </div>
 
+<style>
+    .custom-restricted-width {
+        /* To limit the menu width to the content of the menu: */
+        display: inline-block;
+        /* Or set the width explicitly: */
+        /* width: 10em; */
+    }
+</style>
+
+<div class="pure-menu custom-restricted-width" id="mobilenav">
+
+    <a onclick=toggleMobileMenu()><span class="pure-menu-heading mobile-heading">&#9776; Menu</span></a>
+    <div id="navheading"><h2>Cellari</h2></div>
+<div class="mobilemenu" id="mobilemenu">
+    <ul class="pure-menu-list">
+        <li class="pure-menu-item"><%= link_to('Bottles', bottles_path,  :class => "pure-menu-link") %></li>
+        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Journal</a></li>
+        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Wines</a></li>
+        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Friends</a></li>
+        <li class="pure-menu-item"> <%= link_to('Edit information', edit_user_registration_path, :class => "pure-menu-link") %></li>
+        <li class="pure-menu-item"> <%= link_to('Logout', destroy_user_session_path, :method => :destroy,  :class => "pure-menu-link") %></li>
+    </ul>
+    </div>
+</div>
 

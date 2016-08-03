@@ -1,4 +1,4 @@
-
+<% content_for :title, "My Bottles" %>
 
 <% if @user != nil %>
 
@@ -26,9 +26,8 @@
            <%= f.label :vintage %>
            <%= f.number_field(:vintage, class: "bottleVintageInput large-4.columns", placeholder: "No Vintage", in: 1916..2016) %>
             <%= f.label :notes %>
-          <%= f.text_field(:wine_id, placeholder: "Where did you get this bottle?")%>
+          <%= f.text_field(:notes, placeholder: "Where did you get this bottle?")%>
            <%= submit_tag "Add Bottle", class: "button success", :onclick => "return refreshPrefetch();" %>
-
            <% end %>
 
        </div>
@@ -46,10 +45,10 @@
         <div onclick="showReviewBox(<%= b.id %>)">
             <a>
                 <% if b.wine != nil %>
-                <% if b.wine.product_number != nil%>
-                <img src="http://cdn.alko.fi/ProductImages/Scaled/<%= b.wine.product_number %>/product.jpg">
-                <% else %>
-                <%= image_tag 'red_placeholder.jpg' %>
+                <% if b.wine.product_number != nil %>
+                  <img id="bottleimg" src="http://cdn.alko.fi/ProductImages/Scaled/<%= b.wine.product_number %>/product.jpg" onerror="imageError(this)">
+                  <% else %>
+                  <%= image_tag 'red_placeholder.jpg' %>
                 <% end %>
                 <h5><%= truncate(b.wine.name, :length => 45) %></h5>
                 <h6><%= b.vintage != nil ? b.vintage : "No vintage" %></h6>  
@@ -72,6 +71,7 @@
                <% else %>
                <%= image_tag 'red_placeholder.jpg' %>
                <% end %>
+               <p><%= b.notes %></p>
            </div>
            <form>
             <input type="text" name="firstname" placeholder="Write a description"><br>

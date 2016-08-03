@@ -1,2 +1,24 @@
-<h1>Hello Wines</h1>
 <%= @wines.count %>
+
+   <div class="row small-up-1 medium-up-2 large-up-4">
+
+    <% @wines.each do |b| %>
+
+    <div class="column wineTile">
+        <!-- Fetch product images from Alko cdn -->
+        <div onclick="showReviewBox(<%= b.id %>)">
+            <a>
+                <% if b != nil %>
+                <% if b.product_number != nil%>
+                <img src="http://cdn.alko.fi/ProductImages/Scaled/<%= b.product_number %>/product.jpg" onerror="imageError(this)">
+                <% else %>
+                <%= image_tag 'red_placeholder.jpg' %>
+                <% end %>
+                <h5><%= truncate(b.name, :length => 45) %></h5>
+                <% end %> 
+            </a>
+        </div> 
+        <!-- <button id="drinkWineButton<%= b.id %>" class="button success reviewadd" onclick="showReviewBox(<%= b.id %>)">Drink</button> -->
+</div>
+
+<% end -%>
