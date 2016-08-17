@@ -2,7 +2,7 @@ class BottlesController < ApplicationController
 
 	def create
 		params.permit!
-		@newBottleWine = Wine.find_by(name: params[:bottle][:wine_id])
+		@newBottleWine = Wine.find_by(name: bottle_params[:wine_id])
 		if(@newBottleWine == nil) 
 			redirect_to bottles_path
 		else
@@ -16,7 +16,7 @@ class BottlesController < ApplicationController
 	def destroy
 		@bottle = Bottle.find(params[:id])
 		@bottle.destroy
-		redirect_to root_path
+		redirect_to bottles_path
 	end
 
 	def index
@@ -31,7 +31,7 @@ class BottlesController < ApplicationController
 	private
 
 	  def bottle_params
-	    params.require(:bottle).permit(:user, :wine, :notes, :others)
+	    params.require(:bottle).permit(:user, :wine_id, :notes, :others)
 	  end
 
 end

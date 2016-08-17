@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'wines/api' => 'wines#api'
   get 'wines/' => 'wines#index'
   get 'bottles' => 'bottle#index'
+  get 'friends' => 'friends#index'
   #resources :wines
 
   
