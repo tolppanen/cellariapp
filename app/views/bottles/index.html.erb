@@ -14,7 +14,8 @@
 <div class="wineListHolder">
 
     <div class="wineAdder">
-        <button class="button success" id="addWineButton" onclick="toggleAddBottleField()">+</button>
+
+        <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" id="addWineButton" onclick="toggleAddBottleField()"><i class="material-icons">add</i></button>
 
         <div id="bottleCreator">
             <%= form_for @newbottle do |f| %>

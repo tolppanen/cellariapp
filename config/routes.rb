@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
-  devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
-  
+  devise_for :users
+  # resources :users
 
+  get 'users/:username' => 'users#show'
 
   root 'home#index'
   post 'bottles/' => 'bottles#create'
@@ -11,6 +12,12 @@ Rails.application.routes.draw do
   get 'wines/' => 'wines#index'
   get 'bottles' => 'bottle#index'
   get 'friends' => 'friends#index'
+
+  resources :friends, :controller => 'friends', :except => [:show, :edit] do
+    get "requests", :on => :collection
+    get "invites", :on => :collection
+  end
+
   #resources :wines
 
   

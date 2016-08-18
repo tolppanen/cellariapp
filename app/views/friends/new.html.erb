@@ -1,0 +1,15 @@
+<div>
+  <ul> 
+    <% @users.each do |u| %>
+    <% if current_user.friend_with? u %>
+          <li><%= u.username %> </li>
+      <% elsif current_user.invited? u %>
+          <li><%= u.username %> Pending request..</li>
+      <% elsif u.invited? current_user %>
+          <li><%= u.username %> <%= link_to "Confirm friend?", friend_path(u), :method => "put" %></li>
+      <% else %>
+          <li><%= u.username %> <%= link_to "Add friend?", friends_path(:user_id => u), :method => "post" %></li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>

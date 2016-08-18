@@ -9,11 +9,7 @@
         <div onclick="showReviewBox(<%= b.id %>)">
             <a>
                 <% if b != nil %>
-                <% if b.product_number != nil%>
-                <img src="http://cdn.alko.fi/ProductImages/Scaled/<%= b.product_number %>/product.jpg" onerror="imageError(this)">
-                <% else %>
                 <%= image_tag 'red_placeholder.jpg' %>
-                <% end %>
                 <h5><%= truncate(b.name, :length => 45) %></h5>
                 <% end %> 
             </a>

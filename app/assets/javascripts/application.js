@@ -20,14 +20,13 @@
 
 
 
-
 var displayAddBottle = false;
 var displayMobileMenu = false;
 
 function toggleAddBottleField() {   
 	if(!displayAddBottle) {
 		document.getElementById("bottleCreator").style.display="block";
-		document.getElementById("addWineButton").className="button alert";
+		document.getElementById("addWineButton").className="mdl-button mdl-js-button mdl-button--fab mdl-button--colored";
 		document.getElementById("addWineButton").innerHTML="x";
 		displayAddBottle = true;
 	}
@@ -73,6 +72,7 @@ function toggleMobileMenu() {
 
 
 
+
 var ready;
 
 
@@ -81,6 +81,9 @@ var ready;
 ready = function() {
 
 
+	$('.menu-button').click(function() {
+		console.log("JLDSJDLKSDJ");
+	});
 
 
 	function refreshPrefetch() {
